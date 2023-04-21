@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atguigu.mapper.UserMapper">
+
+    <sql id="Base_Column_List">
+        id, name, age, email,create_time,update_time,isdlete
+    </sql>
+
+    <select id="selectAllByName" resultType="com.atguigu.pojo.User">
+        select
+        <include refid="Base_Column_List"/>
+        from user where name = #{name}
+    </select>
+    <select id="selectPageByPage" resultType="com.atguigu.pojo.User">
+        select  <include refid="Base_Column_List"/>
+            From  user where age > #{age}
+    </select>
+</mapper>
